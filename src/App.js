@@ -3,6 +3,7 @@ import './App.css';
 import Submit from './component/submit';
 import Toast from './component/toast';
 import Loading from './component/loading';
+import ViewSubmission from './component/viewSubmission';
 function App() {
   const [pageState,setPage]=useState(1);
   const [toastVisibility,toggleToast]=useState(false);
@@ -29,9 +30,17 @@ function App() {
 
   return (
    <div id='mainScreen'>
-    {isLoading&&<Loading />}
-    {toastVisibility&&<Toast msg={toastMessage} />}
-    {pageState===1&&<Submit toastToggler={toastToggler} loadingToggler={loadingToggler} updatePageState={updatePageState}/>}
+    
+      <header>
+        <div className='nav-btn' onClick={()=>{updatePageState(1)}}>Submit Code</div>
+        <div className='nav-btn' onClick={()=>{updatePageState(2)}}>View Submission</div>
+      </header>
+      <div id='subScreen'>
+      {isLoading&&<Loading />}
+      {toastVisibility&&<Toast msg={toastMessage} />}
+      {pageState===1&&<Submit toastToggler={toastToggler} loadingToggler={loadingToggler}  />}
+      {pageState===2&&<ViewSubmission toastToggler={toastToggler} loadingToggler={loadingToggler}  />}
+      </div>
    </div>
   );
 }

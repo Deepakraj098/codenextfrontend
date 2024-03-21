@@ -2,13 +2,51 @@
 {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
   width: 100vw;
   height: 100vh;
+  overflow-y: auto;
+  background-color: #001219;
+  display: flex;
+  flex-direction: column;
+}
+header
+{
+  width:100%;
+  height:5vh;
+  display: flex;
+  justify-content: space-around;
+  color:#001219;
+  background-color: #eeee09;
+  padding: 2vmin;
+  align-items: center;
+  font-weight: 600;
+  font-size: 3vmin;
+}
+.nav-btn
+{
+  cursor: pointer;
+  padding: 1.2vmin;
+}
+.nav-btn:hover
+{
+  background-color: rgba(240,248,255,0.7);
+  border-radius: 10%;
+  border:2px solid white;
+}
+#subScreen
+{
+  height: 85vh;
+  overflow-y: auto;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding-bottom: 5vmin;
+  padding-top: 5vmin;
 }
 .contentContainer
 {
-  width:70vw;
+  width:100vw;
   height:fit-content;
   display: flex;
   flex-direction: column;

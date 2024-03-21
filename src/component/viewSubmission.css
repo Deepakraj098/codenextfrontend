@@ -1,0 +1,23 @@
+td ,th
+{
+    
+    border: 1px solid white;
+    padding: 1vmin;
+    text-align: center;
+    width:20%;
+    word-wrap: break-word;
+    height: fit-content;
+    
+}
+table
+{
+    width:80vw;
+    height: fit-content;
+    border: 1px solid white;
+    border-collapse: collapse;
+    color: white;
+}
+thead
+{
+    font-weight: 700;
+}
