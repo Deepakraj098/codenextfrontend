@@ -1,24 +1,38 @@
-import logo from './logo.svg';
+import { useState, useCallback } from 'react';
 import './App.css';
-
+import Submit from './component/submit';
+import Toast from './component/toast';
+import Loading from './component/loading';
 function App() {
+  const [pageState,setPage]=useState(1);
+  const [toastVisibility,toggleToast]=useState(false);
+  const [toastMessage,setToastMsg]=useState('');
+  const [isLoading,setLoading]=useState(false);
+
+  const updatePageState=useCallback((page)=>{
+    setPage(page);
+  },[setPage]);
+
+  const toastToggler=useCallback((msg)=>
+  {
+    toggleToast(true);
+    setToastMsg(msg);
+    setTimeout(()=>{
+      toggleToast(false);
+    },3000);
+  },[toggleToast,setToastMsg]);
+
+  const loadingToggler=useCallback(()=>
+  {
+    setLoading(val=>!val);
+  },[setLoading]);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+   <div id='mainScreen'>
+    {isLoading&&<Loading />}
+    {toastVisibility&&<Toast msg={toastMessage} />}
+    {pageState===1&&<Submit toastToggler={toastToggler} loadingToggler={loadingToggler} updatePageState={updatePageState}/>}
+   </div>
   );
 }
 
